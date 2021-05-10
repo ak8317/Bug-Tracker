@@ -18,6 +18,7 @@ exports.getAll = (Model) =>
     //to allow for nested get reviews on tour
     let filter = {};
     if (req.params.projectId) filter = { project: req.params.projectId };
+
     const features = new APIFeatures(Model.find(filter), req.query)
       .filter()
       .sort()
