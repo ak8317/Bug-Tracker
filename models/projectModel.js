@@ -25,4 +25,18 @@ const projectSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.Model('Project', projectSchema);
+projectSchema.virtual('bugs', {
+  ref: 'Bug',
+  foreignField: 'project',
+  localField: '_id',
+});
+
+projectSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'personnel',
+    select: 'name',
+  });
+  next();
+});
+
+module.exports = mongoose.model('Project', projectSchema);

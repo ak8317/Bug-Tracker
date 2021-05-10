@@ -34,12 +34,13 @@ exports.signup = catchAsync(async (req, res, next) => {
   if (req.body.password1 && req.body.password !== req.body.password1) {
     return next(new AppError('Passwords do not match', 400));
   }
-  const { name, email, password } = req.body;
+  const { name, email, password, role } = req.body;
 
   const newUser = await User.create({
     name,
     email,
     password,
+    role,
   });
 
   createSendToken(newUser, 201, res);

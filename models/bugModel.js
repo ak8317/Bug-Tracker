@@ -49,8 +49,33 @@ const bugSchema = mongoose.Schema(
     },
   },
   {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  },
+  {
     timestamps: true,
   }
 );
+
+bugSchema.pre(/^find/, function (next) {
+  // this.populate({
+  //   path: 'project',
+  //   select: 'name description -personnel -_id',
+  // });
+  // this.populate({
+  //   path: 'assignedTo',
+  //   select: 'name',
+  // })
+  //   .populate({
+  //     path: 'submitter',
+  //     select: 'name',
+  //   })
+  //   .populate({
+  //     path: 'project',
+  //     select: 'name',
+  //   });
+
+  next();
+});
 
 module.exports = mongoose.model('Bug', bugSchema);

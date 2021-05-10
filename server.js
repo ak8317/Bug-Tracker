@@ -10,7 +10,8 @@ const connectDB = require('./config/db');
 const globalErrorhandler = require('./controller/errorController');
 
 process.on('uncaughtException', (err) => {
-  console.error(err.name, err.message);
+  console.error(err);
+
   console.log('Shutting Down');
   process.exit(1);
 });
@@ -31,6 +32,8 @@ app.use(xss());
 
 //routes
 app.use('/api/users', require('./routes/userRoute'));
+app.use('/api/projects', require('./routes/projectRoute'));
+app.use('/api/bugs', require('./routes/bugRoute'));
 
 app.use(globalErrorhandler);
 
