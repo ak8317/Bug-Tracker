@@ -116,6 +116,7 @@ const AuthState = (props) => {
         login,
         logout,
         clearErrors,
+        setLoading,
       }}
     >
       {props.children}

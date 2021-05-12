@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
-import AuthContext from '../../context/auth/authContext';
+import AuthContext from '../../../context/auth/authContext';
+import { Link } from 'react-router-dom';
 
 const SideBarNav = () => {
   const authContext = useContext(AuthContext);
-  const { logout } = authContext;
+  const { logout, setLoading } = authContext;
   const [toggle, setToggle] = useState(false);
   const onLogout = () => {
     logout();
+    setLoading();
   };
   return (
     <>
@@ -55,13 +57,13 @@ const SideBarNav = () => {
           <span className='font-bold text-2xl'>Bug Tracker</span>
         </a>
         <nav>
-          <a
-            href='#!'
+          <Link
+            to='/home'
             className='block py-2.5 px-4 hover:bg-blue-700 rounded transition duration-200
            hover:text-white focus:bg-blue-700 focus:text-white'
           >
             Dashboard
-          </a>
+          </Link>
           <a
             href='#!'
             className='block py-2.5 px-4 hover:bg-blue-700 rounded transition duration-200
@@ -76,13 +78,13 @@ const SideBarNav = () => {
           >
             Manage Project Users
           </a>
-          <a
-            href='#!'
+          <Link
+            to='/projects'
             className='block py-2.5 px-4 hover:bg-blue-700 rounded transition duration-200
            hover:text-white focus:bg-blue-700 focus:text-white'
           >
             My Projects
-          </a>
+          </Link>
           <a
             href='#!'
             className='block py-2.5 px-4 hover:bg-blue-700 rounded transition duration-200

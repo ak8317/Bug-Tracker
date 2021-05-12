@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 import Navbar from './Navbar';
 import SideBar from './SideBarNav';
-import AuthContext from '../../context/auth/authContext';
-import Spinner from './Spinner';
-import { load } from 'dotenv';
+import AuthContext from '../../../context/auth/authContext';
+import Spinner from '../../layout/Spinner';
 
 const MainNav = () => {
   const authContext = useContext(AuthContext);

@@ -15,6 +15,10 @@ const projectSchema = mongoose.Schema(
         ref: 'User',
       },
     ],
+    totalBugs: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     toJSON: { virtuals: true },
